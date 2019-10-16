@@ -3,6 +3,13 @@ $(document).ready(function(){
 
   updateTemperature();
 
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=London&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
+    var currentTemp = data.main.temp
+    var currentWeather = data.weather[0].description
+    // $('#current-temperature').text(currentTemp + "y");
+    $('#current-weather').text(currentWeather.toUpperCase() + " " + currentTemp + "°C");
+  })
+
   $('#increase').click(function(){
     thermostat.up();
     updateTemperature();
