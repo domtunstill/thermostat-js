@@ -32,7 +32,7 @@ Thermostat.prototype.isMinTemp = function() {
 };
 
 Thermostat.prototype.isMaxTemp = function() {
-  return this._temp === this._maxTemp;
+  return this._temp >= this._maxTemp;
 };
 
 Thermostat.prototype.powerSaveOn = function() {

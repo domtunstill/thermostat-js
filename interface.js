@@ -25,9 +25,9 @@ $(document).ready(function(){
 
   function updateStatus() {
     if(thermostat._maxTemp === 25) {
-      $('#powersave').css('background-color', 'green');
+      $('#powersave').css('background-color', 'rgb(118, 223, 27)');
     } else {
-      $('#powersave').css('background-color', 'red');
+      $('#powersave').css('background-color', 'rgb(244, 100, 78)');
     }
 
     if(thermostat.getEnergyUsage() === 'low-usage') {

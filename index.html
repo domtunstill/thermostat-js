@@ -4,22 +4,71 @@
   <head>
     <meta charset="utf-8">
     <title>Thermostat</title>
-​
     <script src="src/Thermostat.js"></script>
     <script src="jquery.js"></script>
     <script src="interface.js"></script>
 
+    <style>
+
+      @import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+
+      body {
+        background-color: black;
+      }
+
+      .thermostat {
+        text-align: center;
+        margin-top: 10%;
+        margin-left: 42%;
+        background-color:white;
+        border:3px solid black;    
+        border-radius:75%;
+        -moz-border-radius:75%;
+        -webkit-border-radius:75%;
+        height: 200px;
+        width: 200px;
+      }
+
+      h1 {
+        color: white;
+        text-align: center;
+      }
+
+      button{
+        border: black 1px solid;
+      }
+
+      #reset_temperature {
+        margin-top: 8px;
+      }
+
+      .temperature {
+        border: solid black 2px;
+        background-color: rgb(27, 203, 223);
+        font-family: 'Orbitron', sans-serif;
+        width: 50%;
+        padding-top: 2px;
+        margin-left: 25%;
+       }
+
+    </style>
+
   </head>
+
   <body>
 
-    <button id="increase">+</button>
-    <button id="decrease">-</button>
-    <button id="reset_temperature">reset</button>
-    <h1 id="temperature"></h1>
+    <h1>Thermostatic</h1>
 
-    <button id="powersave">Energy save</button>
-    <div id="powersave_status"></div>
+    <div class="thermostat">
+      <br>
+      <br>
+      <button id="increase">+</button>
+      <button id="decrease">-</button>
+      <h1 class="temperature" id="temperature"></h1>
+      <button id="powersave">Energy save</button>
+      <br>
+      <button id="reset_temperature">reset</button>
+    </div>
 
-    <div id="energy_usage"></div>
   </body>
 </html>
