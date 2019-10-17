@@ -1,14 +1,21 @@
 $(document).ready(function(){
   var thermostat = new Thermostat();
-
   updateTemperature();
+  getLocation();
 
-  $.get('http://api.openweathermap.org/data/2.5/weather?q=London&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
-    var currentTemp = data.main.temp
-    var currentWeather = data.weather[0].description
-    // $('#current-temperature').text(currentTemp + "y");
-    $('#current-weather').text(currentWeather.toUpperCase() + " " + currentTemp + "°C");
-  })
+  function getLocation() {
+      navigator.geolocation.getCurrentPosition(showPosition);
+  }
+  
+  function showPosition(position) {
+    $.get('http://api.openweathermap.org/data/2.5/weather?lat='+position.coords.latitude+'&lon='+position.coords.longitude+'&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
+      var currentTemp = data.main.temp
+      var currentWeather = data.weather[0].description
+      var currentLocation = data.name
+      $('#current-weather').text(currentWeather.toUpperCase() + " " + currentTemp + "°C");
+      $('#current-location').text(currentLocation);
+    })
+  }
 
   $('#increase').click(function(){
     thermostat.up();
@@ -26,30 +33,20 @@ $(document).ready(function(){
   })
 
   $('#powersave').click(function(){
-    thermostat.powerSave();
+    $('#powersave').attr('class', thermostat.powerSave());
     updateTemperature();
   })
-
-  function updateStatus() {
-    if(thermostat._maxTemp === 25) {
-      $('#powersave').css('background-color', 'rgb(118, 223, 27)');
-    } else {
-      $('#powersave').css('background-color', 'rgb(244, 100, 78)');
-    }
-
-    if(thermostat.getEnergyUsage() === 'low-usage') {
-      $('#temperature').css('color', 'green');
-    } else if(thermostat.getEnergyUsage() === 'medium-usage') {
-      $('#temperature').css('color', 'black');
-    } else {
-      $('#temperature').css('color', 'red');
-    }
-    
-  };
 
   function updateTemperature() {
     $('#temperature').text(thermostat.getCurrentTemp());
     updateStatus();
+  };
+
+  function updateStatus() {
+    $('#low-usage').attr('class','energy_usage');
+    $('#medium-usage').attr('class','energy_usage');
+    $('#high-usage').attr('class','energy_usage');
+    $('#'+thermostat.getEnergyUsage()).addClass(thermostat.getEnergyUsage());
   };
 
 });

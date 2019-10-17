@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-​
+​open.
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -7,51 +7,7 @@
     <script src="src/Thermostat.js"></script>
     <script src="jquery.js"></script>
     <script src="interface.js"></script>
-
-    <style>
-
-      @import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
-
-      body {
-        background-color: black;
-      }
-
-      .thermostat {
-        text-align: center;
-        margin-top: 10%;
-        margin-left: 42%;
-        background-color:white;
-        border:3px solid black;    
-        border-radius:75%;
-        -moz-border-radius:75%;
-        -webkit-border-radius:75%;
-        height: 200px;
-        width: 200px;
-      }
-
-      h1 {
-        color: white;
-        text-align: center;
-      }
-
-      button{
-        border: black 1px solid;
-      }
-
-      #reset_temperature {
-        margin-top: 8px;
-      }
-
-      .temperature {
-        border: solid black 2px;
-        background-color: rgb(27, 203, 223);
-        font-family: 'Orbitron', sans-serif;
-        width: 50%;
-        padding-top: 2px;
-        margin-left: 25%;
-       }
-
-    </style>
+    <link rel="stylesheet" href="./public/main.css">
 
   </head>
 
@@ -62,20 +18,24 @@
     <div class="thermostat">
       <br>
       <br>
-      <button id="increase">+</button>
-      <button id="decrease">-</button>
-      <h1 class="temperature" id="temperature"></h1>
-      <button id="powersave">Energy save</button>
+      <button class="change_temperature" id="increase">+</button>
+      <button class="change_temperature" id="decrease">-</button>
+      <h1 id="temperature"></h1>
+      <button class="powersave_on" id="powersave">PSM On/Off</button>
       <br>
       <button id="reset_temperature">reset</button>
+      <br>
+      <div>Energy usage</div>
+      <div class="main_energy">
+      <div class="energy_usage" id="low-usage"></div><div id="medium-usage" class="energy_usage"></div><div id="high-usage" class="energy_usage"></div></div>
     </div>
 
     
-    <section>
+    <section class="weather">
         <!-- <h1>Current temperature: <span id="current-temperature"></span></h1> -->
         <h1>Current weather: <span id="current-weather"></span></h1>
+        <h1>Current location: <span id="current-location"></span></h1>
     </section>
-
 
   </body>
 </html>
