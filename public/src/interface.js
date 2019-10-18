@@ -8,9 +8,7 @@ $(document).ready(function(){
   }
 
   $.get("/temperature", function(response) {
-    // if (Number(response) !== NaN){
-      thermostat._temp = Number(response)
-    // }
+    thermostat._temp = Number(response)
     updateTemperature()
   })
 

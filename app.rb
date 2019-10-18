@@ -11,13 +11,24 @@ class Thermostat < Sinatra::Base
 
   get "/temperature" do
     headers 'Access-Control-Allow-Origin' => '*'
-    session[:temperature] = 20 if session[:temperature] == nil
-    session[:temperature].to_i.to_json
+    read_file.to_json
   end
 
   post "/temperature" do
     headers 'Access-Control-Allow-Origin' => '*'
-    session[:temperature] = params[:temperature]
+    save_file(params)
+  end
+
+  def save_file(params)
+    File.open("public/temp.json","w") do |f|
+      f.write(params.to_json)
+    end
+  end
+
+  def read_file
+    file = File.open("public/temp.json","r")
+    data = JSON.load file
+    data["temperature"].to_i
   end
 
   run! if app_file == $0

@@ -1,23 +1,20 @@
-@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
-
 body {
-  background-color: black;
-}
+    background-color: black;
+  }
+  
+  h1 {
+    color: white;
+    background-color: black;
+    display: table;
+    margin: 0 auto;
+  }
+  
+  button{
+    border: black 1px solid;
+    margin-bottom: 3px;
+  }
 
-h1 {
-  color: white;
-  background-color: black;
-  /* display:inline-block;  */
-  display: table;
-  /* width: auto; */
-  /* text-align: center; */
-  margin: 0 auto;
-}
-
-button{
-  border: black 1px solid;
-  margin-bottom: 3px;
-}
+  @import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
 
 .thermostat {
   text-align: center;
@@ -95,7 +92,7 @@ button{
  }
 
  .light-rain{
-    background-image: url("./light-rain.jpg");
+    background-image: url("./public/light-rain.jpg");
     /* background-size: cover; */
   }
 
