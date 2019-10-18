@@ -9,7 +9,7 @@ class Thermostat < Sinatra::Base
   end
 
   get "/temperature" do
-    read_file
+    read_file.to_json
   end
 
   post "/temperature" do
@@ -24,8 +24,7 @@ class Thermostat < Sinatra::Base
 
   def read_file
     file = File.open("public/temp.json","r")
-    data = JSON.load file
-    # data["temperature"].to_i
+    JSON.load file
   end
 
   run! if app_file == $0
