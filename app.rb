@@ -5,17 +5,14 @@ class Thermostat < Sinatra::Base
   enable :sessions
 
   get '/' do
-    # File.read('views/index.html')
     erb :index
   end
 
   get "/temperature" do
-    headers 'Access-Control-Allow-Origin' => '*'
-    read_file.to_json
+    read_file
   end
 
   post "/temperature" do
-    headers 'Access-Control-Allow-Origin' => '*'
     save_file(params)
   end
 
@@ -28,7 +25,7 @@ class Thermostat < Sinatra::Base
   def read_file
     file = File.open("public/temp.json","r")
     data = JSON.load file
-    data["temperature"].to_i
+    # data["temperature"].to_i
   end
 
   run! if app_file == $0

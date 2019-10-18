@@ -1,16 +1,35 @@
 $(document).ready(function(){
   var thermostat = new Thermostat();
-  updateTemperature();
   getLocation();
+  load();
 
   function getLocation() {
       navigator.geolocation.getCurrentPosition(showPosition);
   }
 
   $.get("/temperature", function(response) {
-    thermostat._temp = Number(response)
+    response = JSON.parse(response)
+    thermostat._temp = response[1]
     updateTemperature()
   })
+
+  function load(){
+    $.getJSON( "public/temp.json", function(data) {
+      // var items = [];
+      // $.each( data, function( key, val ) {
+      //   items.push( "<li id='" + key + "'>" + val + "</li>" );
+      // });
+     
+      // $( "<ul/>", {
+      //   "class": "my-new-list",
+      //   html: items.join( "" )
+      // }).appendTo( "body" );
+      console.log(data)
+    })
+    // temp = JSON.load File.open("/temp.json");
+    // var myData = JSON.parse(temp);
+    // alert(myData.temperature);
+  }
 
   function sendState() {
     var temperature = { temperature: thermostat._temp }
@@ -42,11 +61,13 @@ $(document).ready(function(){
 
   $('#reset_temperature').click(function(){
     thermostat.reset();
+    sendState();
     updateTemperature();
   })
 
   $('#powersave').click(function(){
     $('#powersave').attr('class', thermostat.powerSave());
+    sendState();
     updateTemperature();
   })
 

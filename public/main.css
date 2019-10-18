@@ -92,8 +92,8 @@ body {
  }
 
  .light-rain{
-    background-image: url("./public/light-rain.jpg");
-    /* background-size: cover; */
+    background-image: url("./light-rain.jpg");
+    background-size: cover;
   }
 
   .heavy-rain{
