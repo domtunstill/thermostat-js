@@ -6,11 +6,17 @@ body {
 
 h1 {
   color: white;
-  text-align: center;
+  background-color: black;
+  /* display:inline-block;  */
+  display: table;
+  /* width: auto; */
+  /* text-align: center; */
+  margin: 0 auto;
 }
 
 button{
   border: black 1px solid;
+  margin-bottom: 3px;
 }
 
 .thermostat {
@@ -27,6 +33,7 @@ button{
 }
 
 #temperature {
+  font-size: 40px;
   color: black;
   border: solid black 2px;
   background-color: rgb(27, 203, 223);
@@ -34,6 +41,8 @@ button{
   width: 50%;
   padding-top: 2px;
   margin-left: 25%;
+  margin-top: 8px;
+  margin-bottom: 8px;
  }
 
 #reset_temperature {
@@ -84,3 +93,24 @@ button{
  .weather{
    margin-top: 100px;
  }
+
+ .light-rain{
+    background-image: url("./light-rain.jpg");
+    /* background-size: cover; */
+  }
+
+  .heavy-rain{
+    margin-top: 100px;
+  }
+
+  .cloudy{
+    margin-top: 100px;
+  }
+
+  .sunny{
+    margin-top: 100px;
+  }
+
+  .stormy{
+    margin-top: 100px;
+  }
