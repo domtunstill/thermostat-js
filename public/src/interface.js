@@ -7,7 +7,7 @@ $(document).ready(function(){
   }
 
   $.get("/temperature", function(response) {
-    thermostat._temp = response["temperature"] 
+    thermostat._temp = JSON.parse(response)[1]
     updateTemperature()
   })
 
